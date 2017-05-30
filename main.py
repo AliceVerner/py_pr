@@ -4,6 +4,11 @@ from tkinter import *
 from tkinter.filedialog import *
 from tkinter import messagebox
 import fileinput
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.tokenize import sent_tokenize
+# from nltk.corpus import stopwords
+
 
 def openTextFile():
      TextFileData = askopenfilename()
@@ -17,8 +22,13 @@ def closeApplication():
 def openAboutWindow():
     aboutWindow = messagebox.showinfo("about", "Made with love in RSSU, 2017")
 
-def countNumberOfSentences(text):
-    return text.count('.')+text.count('!')+text.count('?')
+# def countNumberOfSentences(text):
+#     return text.count("...")+text.count(". ")+text.count('!')+text.count('?')+text.count('.')
+def countNumberOfSentences(text1):
+    lines = text1
+    tokenized_sents = [sent_tokenize(lines)]
+    for  k in tokenized_sents:
+        return(str(len(k)))
  
 def updateCounter(event):              #обработчик событий 
     updateCounterForDownloadedFile()
